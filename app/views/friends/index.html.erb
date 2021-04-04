@@ -1,0 +1,37 @@
+<% if user_signed_in? %>
+  <table class="table table-striped table-bordered table-hover mt-4">
+  <thead class="table-dark">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Twitter</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @friends.each do |friend| %>
+    <% if friend.user == current_user %>
+      <tr>
+        <td>
+          <%= link_to friend.firts_name + ' ' + friend.last_name, friend%></td>
+        </td>
+        <td><%= friend.email %></td>
+        <td><%= friend.phone %></td>
+        <td><%= friend.twitter %></td>
+        <td><%= link_to 'Delete', friend, class: "btn btn-outline-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+      
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'New Friend', new_friend_path, class:"btn btn-secondary" %>
+<% else %>
+<h2>Hello World!</h2>
+<p>This is hello world page.</p>
+<% end %>
+
