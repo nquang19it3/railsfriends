@@ -1,0 +1,2 @@
+module TheLoaiSachHelper
+end
